@@ -9,9 +9,11 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "TrailerViewController.h"
+#import "TicketViewController.h"
 //#import "MoviesViewController.m"
 
 @interface DetailsViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -73,6 +75,10 @@
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"overview"];
     
+    //adjust size. add scrollView property
+    CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height;
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, maxHeight);
+    
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
 }
@@ -103,6 +109,8 @@
     //NSDictionary *movie = self.movies[indexPath.row];
     TrailerViewController *trailerViewController = [segue destinationViewController];
     trailerViewController.movie = self.movie;
+    TicketViewController *ticketViewController = [segue destinationViewController];
+    ticketViewController.movie = self.movie;
     
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

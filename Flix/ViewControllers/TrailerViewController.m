@@ -27,15 +27,10 @@
 - (void)fetchTrailers{
     //get url
     NSString *baseTrailersURLString = @"https://api.themoviedb.org/3/movie/";
-    NSLog(@"%@", baseTrailersURLString);
     NSNumber *movie_id = self.movie[@"id"];
-    NSLog(@"%@", movie_id);
     NSString *endTrailersURLString = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
-    NSLog(@"%@", endTrailersURLString);
     NSString *midTrailersURLString = [baseTrailersURLString stringByAppendingString:movie_id.stringValue];
-    NSLog(@"%@", midTrailersURLString);
     NSString *fullTrailersURLString = [midTrailersURLString stringByAppendingString:endTrailersURLString];
-    NSLog(@"%@", fullTrailersURLString);
     //https://api.themoviedb.org/3/movie/260513/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US
     
     NSURL *url = [NSURL URLWithString:fullTrailersURLString];

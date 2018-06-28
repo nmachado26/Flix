@@ -115,28 +115,32 @@
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
     detailsViewController.movies = self.filteredMovies;
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.view endEditing:YES];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
-    NSString *searchText = searchController.searchBar.text;
-    if (searchText) {
+    if (searchText.length != 0) {
         
-        if (searchText.length != 0) {
-            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-                return [evaluatedObject[@"title"] containsString:searchText];
-            }];
-            self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-        }
-        else {
-            self.filteredMovies = self.movies;
-        }
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"title"] containsString:searchText];
+        }];
+        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
         
-        [self.tableView reloadData];
+        NSLog(@"%@", self.filteredMovies);
         
     }
+    else {
+        self.filteredMovies = self.movies;
+    }
+    
+    [self.tableView reloadData];
     
 }
 
