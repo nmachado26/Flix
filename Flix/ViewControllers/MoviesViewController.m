@@ -32,15 +32,13 @@
     self.tableView.delegate = self;
     self.movieSearchBar.delegate = self;
     [self fetchMovies];
-
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged]; //said its not used anymore? why are we
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventPrimaryActionTriggered];
     [self.activityIndicator startAnimating];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
-
-
 
 - (void)fetchMovies{
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
@@ -97,7 +95,33 @@
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
+    // [cell.posterView setImageWithURL:posterURL];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:posterURL];
+    
+    __weak MovieCell *weakSelf = self;
+    [cell.posterView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+        // imageResponse will be nil if the image is cached
+        if (imageResponse) {
+            NSLog(@"Image was NOT cached, fade in image");
+            cell.posterView.alpha = 0.0;
+            cell.posterView.image = image;
+            
+            //Animate UIImageView back to alpha 1 over 0.3sec
+            [UIView animateWithDuration:0.3 animations:^{
+                cell.posterView.alpha = 1.0;
+            }];
+        }
+        else {
+            NSLog(@"Image was cached so just update the image");
+            cell.posterView.image = image;
+        }
+    }
+    failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+    // do something for the failure condition
+    }];
+    
+    
     
     //cell.posterView = movie[@"poster_path"];
     //NSLog(@"%@", [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);

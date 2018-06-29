@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UILabel *backgroundLabel;
 
 @end
 
@@ -26,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.backgroundLabel.layer.cornerRadius = 10;
+    self.backgroundLabel.clipsToBounds = true;
+    
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = self.movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
@@ -76,7 +80,7 @@
     self.synopsisLabel.text = self.movie[@"overview"];
     
     //adjust size. add scrollView property
-    CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height;
+    CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height + 80;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, maxHeight);
     
     [self.titleLabel sizeToFit];

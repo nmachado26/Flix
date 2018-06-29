@@ -200,37 +200,51 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2MK-6l-uiO">
-                                        <rect key="frame" x="0.0" y="-64" width="375" height="338"/>
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="406"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-WP-KHx">
+                                        <rect key="frame" x="8" y="446" width="360" height="158"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znz-C6-Vws" userLabel="Poster Background">
+                                        <rect key="frame" x="16" y="230" width="161" height="208"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="84x-ZL-Oas">
-                                        <rect key="frame" x="8" y="170" width="145" height="199"/>
+                                        <rect key="frame" x="24" y="238" width="145" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="pYI-MY-Wbe" appends="YES" id="J8w-wa-3Rx"/>
                                         </connections>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-WP-KHx">
-                                        <rect key="frame" x="8" y="377" width="360" height="226"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HZ-Z4-7kR">
-                                        <rect key="frame" x="161" y="282" width="186" height="21"/>
+                                        <rect key="frame" x="181" y="350" width="186" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buy Tickets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOI-IR-kug">
-                                        <rect key="frame" x="167" y="332" width="142" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsx-T8-SyR" userLabel="backgroundLabel">
+                                        <rect key="frame" x="190" y="400" width="128" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buy Tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOI-IR-kug">
+                                        <rect key="frame" x="190" y="400" width="128" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="6xb-ar-p2s" appends="YES" id="1sa-GG-Q6F"/>
@@ -245,6 +259,7 @@
                     </view>
                     <connections>
                         <outlet property="backdropView" destination="2MK-6l-uiO" id="UAj-QP-Oai"/>
+                        <outlet property="backgroundLabel" destination="lsx-T8-SyR" id="db8-Gp-Nc8"/>
                         <outlet property="posterView" destination="84x-ZL-Oas" id="E5x-yJ-4et"/>
                         <outlet property="scrollView" destination="syH-YA-NnE" id="oWn-3Z-8Lm"/>
                         <outlet property="synopsisLabel" destination="3Yy-WP-KHx" id="PTd-t3-QR6"/>
@@ -351,10 +366,10 @@
             </objects>
             <point key="canvasLocation" x="140" y="712.89355322338838"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="0r5-mW-vgS">
             <objects>
-                <viewController id="xD3-Dk-q02" sceneMemberID="viewController">
+                <viewController id="xD3-Dk-q02" customClass="WelcomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LTY-KJ-yrP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,6 +403,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="watchButton:" destination="kRa-ro-EGh" eventType="touchUpInside" id="sXD-m2-c0b"/>
                                     <outletCollection property="gestureRecognizers" destination="P7H-uY-ao8" appends="YES" id="V16-Mh-YF3"/>
                                 </connections>
                             </button>
@@ -395,8 +411,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="dp9-Q2-Qjc"/>
                     </view>
+                    <connections>
+                        <outlet property="welcomeButton" destination="XkU-wj-fTL" id="Y1Y-L9-lFH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kx4-om-gLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kRa-ro-EGh" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="P7H-uY-ao8" userLabel="Tap Gesture Recognizer to Main">
                     <connections>
                         <segue destination="hry-ZE-68v" kind="show" id="uB0-GI-n7a"/>

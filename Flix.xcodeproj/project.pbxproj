@@ -19,6 +19,7 @@
 		4D7A899420E53FB300940A19 /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A899320E53FB300940A19 /* TrailerViewController.m */; };
 		4D7A899620E560AB00940A19 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7A899520E560AA00940A19 /* WebKit.framework */; };
 		4D7A899C20E5817D00940A19 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A899B20E5817D00940A19 /* TicketViewController.m */; };
+		4D7A899F20E6051B00940A19 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A899E20E6051B00940A19 /* WelcomeViewController.m */; };
 		4D84743420E49DF500456728 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84743320E49DF500456728 /* DetailsViewController.m */; };
 		4D84743720E4B30F00456728 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84743620E4B30F00456728 /* MoviesGridViewController.m */; };
 		4D84743A20E4B5DE00456728 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84743920E4B5DE00456728 /* MovieCollectionCell.m */; };
@@ -74,6 +75,8 @@
 		4D7A899520E560AA00940A19 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4D7A899A20E5817D00940A19 /* TicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
 		4D7A899B20E5817D00940A19 /* TicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
+		4D7A899D20E6051B00940A19 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		4D7A899E20E6051B00940A19 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		4D84743220E49DF500456728 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		4D84743320E49DF500456728 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		4D84743520E4B30F00456728 /* MoviesGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesGridViewController.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				4D7A899320E53FB300940A19 /* TrailerViewController.m */,
 				4D7A899A20E5817D00940A19 /* TicketViewController.h */,
 				4D7A899B20E5817D00940A19 /* TicketViewController.m */,
+				4D7A899D20E6051B00940A19 /* WelcomeViewController.h */,
+				4D7A899E20E6051B00940A19 /* WelcomeViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				4D7A251920E3F7EB000C51A3 /* AppDelegate.m in Sources */,
 				4D7A899C20E5817D00940A19 /* TicketViewController.m in Sources */,
 				4D84743A20E4B5DE00456728 /* MovieCollectionCell.m in Sources */,
+				4D7A899F20E6051B00940A19 /* WelcomeViewController.m in Sources */,
 				4D7A899420E53FB300940A19 /* TrailerViewController.m in Sources */,
 				4D7A258F20E44D25000C51A3 /* MovieCell.m in Sources */,
 				4D7A254B20E40DE1000C51A3 /* MoviesViewController.m in Sources */,
