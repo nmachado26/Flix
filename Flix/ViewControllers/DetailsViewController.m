@@ -88,32 +88,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)buyTicket{
-    //https://www.fandango.com/search?q=incredibles&mode=general
-    NSString *baseURLString = @"https://www.fandango.com/search?q=";
-    NSString *middleString = self.movie[@"title"];
-    NSString *endURLString = @"&mode=general";
-    NSString *firstURLString = [baseURLString stringByAppendingString:middleString];
-    NSString *fullURLString = [firstURLString stringByAppendingString:endURLString];
-    NSURL *url = [NSURL URLWithString:fullURLString];
-}
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    
-  //  UICollectionViewCell *tappedCell = sender;
-    //NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-    //NSDictionary *movie = self.movies[indexPath.row];
     TrailerViewController *trailerViewController = [segue destinationViewController];
     trailerViewController.movie = self.movie;
     TicketViewController *ticketViewController = [segue destinationViewController];
     ticketViewController.movie = self.movie;
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 

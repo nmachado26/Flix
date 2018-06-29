@@ -31,10 +31,9 @@
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged]; //said its not used anymore? why are we
-    //[self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventPrimaryActionTriggered];
-   // [self.activityIndicator startAnimating];
-  //  [self.tableView insertSubview:self.refreshControl atIndex:0];
-    //[self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventPrimaryActionTriggered];
+    //[self.activityIndicator startAnimating];
+    //[self.tableView insertSubview:self.refreshControl atIndex:0];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
@@ -76,8 +75,8 @@
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
         }
-      //  [self.refreshControl endRefreshing];
-       // [self.activityIndicator stopAnimating];
+        [self.refreshControl endRefreshing];
+       //[self.activityIndicator stopAnimating];
     }];
     [task resume];
 }

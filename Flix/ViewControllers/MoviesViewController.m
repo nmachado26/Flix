@@ -35,11 +35,11 @@
 
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged]; //said its not used anymore? why are we
-    //[self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventPrimaryActionTriggered];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventPrimaryActionTriggered];
     [self.activityIndicator startAnimating];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    //[self.tableView addSubview:self.refreshControl];
 }
+
 
 - (void)fetchMovies{
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
