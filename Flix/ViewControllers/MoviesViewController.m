@@ -31,6 +31,10 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.movieSearchBar.delegate = self;
+    
+    //UIApplication.sharedApplication.statusBarStyle = .UIStatusBarStyleLightContent;
+   // UIApplication.shared.statusBarStyle = .lightContent
+    
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -120,11 +124,6 @@
     failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
     // do something for the failure condition
     }];
-    
-    
-    
-    //cell.posterView = movie[@"poster_path"];
-    //NSLog(@"%@", [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);
     return cell;
 }
 
@@ -141,8 +140,6 @@
     detailsViewController.movie = movie;
     detailsViewController.movies = self.filteredMovies;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -150,23 +147,16 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
     if (searchText.length != 0) {
-        
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
             return [evaluatedObject[@"title"] containsString:searchText];
         }];
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-        
-        NSLog(@"%@", self.filteredMovies);
-        
     }
     else {
         self.filteredMovies = self.movies;
     }
-    
     [self.tableView reloadData];
-    
 }
 
 

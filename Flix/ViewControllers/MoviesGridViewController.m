@@ -37,11 +37,11 @@
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
-    layout.minimumLineSpacing = 5;
-    layout.minimumInteritemSpacing = 5;
+    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 10;
     CGFloat postersPerLine = 2;
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
-    CGFloat itemHeight = 1.5 * itemWidth;
+    CGFloat itemHeight = 1 * itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
@@ -99,7 +99,11 @@
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
+    
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 90;
     
     NSDictionary *movie = self.movies[indexPath.item];
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
