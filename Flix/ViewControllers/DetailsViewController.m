@@ -33,20 +33,16 @@
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = self.movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     [self.posterView setImageWithURL:posterURL];
     
     NSString *baseURLStringLowRes = @"https://image.tmdb.org/t/p/w45";
-    
     NSString *backdropURLString = self.movie[@"backdrop_path"];
     NSString *fullBackdropURLStringLowRes = [baseURLStringLowRes stringByAppendingString:backdropURLString];
     NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
+    
     NSURL *backdropURLLowRes = [NSURL URLWithString:fullBackdropURLStringLowRes];
     NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
-    
-//    [self.backdropView setImageWithURL:backdropURLLowRes];
-//    [self.backdropView setImageWithURL:backdropURL];
     
     NSURLRequest *requestSmall = [NSURLRequest requestWithURL:backdropURLLowRes];
     NSURLRequest *requestLarge = [NSURLRequest requestWithURL:backdropURL];
@@ -82,7 +78,6 @@
     //adjust size. add scrollView property
     CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height + 80;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, maxHeight);
-    
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
 }
@@ -101,6 +96,5 @@
     TicketViewController *ticketViewController = [segue destinationViewController];
     ticketViewController.movie = self.movie;
 }
-
 
 @end

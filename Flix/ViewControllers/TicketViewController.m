@@ -17,19 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    //https://www.fandango.com/search?q=incredibles&mode=general
+
     NSString *baseURLString = @"https://www.fandango.com/search?q=";
     NSString *movieString = self.movie[@"title"];
     CGFloat index = [movieString rangeOfString:@" "].location;
     NSString *movieSearchString = [movieString substringToIndex:index];
     NSString *endURLString = @"&mode=general";
+    
     NSString *firstURLString = [baseURLString stringByAppendingString:movieSearchString];
     NSString *fullURLString = [firstURLString stringByAppendingString:endURLString];
     NSURL *url = [NSURL URLWithString:fullURLString];
-    
-    NSLog(@"%@", fullURLString);
     
     // Place the URL in a URL Request.
     NSURLRequest *request = [NSURLRequest requestWithURL:url

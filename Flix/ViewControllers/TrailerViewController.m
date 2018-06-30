@@ -18,10 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self fetchTrailers];
-    
-
 }
 
 - (void)fetchTrailers{
@@ -31,7 +28,6 @@
     NSString *endTrailersURLString = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
     NSString *midTrailersURLString = [baseTrailersURLString stringByAppendingString:movie_id.stringValue];
     NSString *fullTrailersURLString = [midTrailersURLString stringByAppendingString:endTrailersURLString];
-    //https://api.themoviedb.org/3/movie/260513/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US
     
     NSURL *url = [NSURL URLWithString:fullTrailersURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -50,9 +46,8 @@
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             self.trailers = dataDictionary[@"results"];
             
-            
+            //now get URL for youtube to open page
             NSString *baseYoutubeURLString = @"https://www.youtube.com/watch?v=";
-            // Convert the url String to a NSURL object.
             NSDictionary *trailer = [self.trailers firstObject];
             NSString *key = trailer[@"key"];
             NSString *finalYoutubeURLString = [baseYoutubeURLString stringByAppendingString:key];
@@ -64,18 +59,7 @@
                                                  timeoutInterval:10.0];
             // Load Request into WebView.
             [self.trailerWebView loadRequest:request];
-            
-            //https://www.youtube.com/watch?v=\(key)
-            // Do any additional setup after loading the view.
-            
-            
-            //[self.tableView reloadData];
-            // TODO: Get the array of movies
-            // TODO: Store the movies in a property to use elsewhere
-            // TODO: Reload your table view data
         }
-        //[self.refreshControl endRefreshing];
-       // [self.activityIndicator stopAnimating];
     }];
     [task resume];
 }

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *movieSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl; //why strong and nonatomic first
+@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
@@ -27,16 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.movieSearchBar.delegate = self;
     
-    //UIApplication.sharedApplication.statusBarStyle = .UIStatusBarStyleLightContent;
-   // UIApplication.shared.statusBarStyle = .lightContent
-    
     [self fetchMovies];
-    
+    //refresh and activity indicator
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged]; //said its not used anymore? why are we
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventPrimaryActionTriggered];
@@ -57,18 +54,17 @@
                 [self fetchMovies];
             }]];
             [self presentViewController:alertView animated:YES completion:nil];
-            
             NSLog(@"%@", [error localizedDescription]);
         }
         else {
+            //Get the array of movies
+            //Store the movies in a property to use elsewhere
+            //Reload your table view data
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             self.movies = dataDictionary[@"results"];
             self.filteredMovies = self.movies;
             
             [self.tableView reloadData];
-            // TODO: Get the array of movies
-            // TODO: Store the movies in a property to use elsewhere
-            // TODO: Reload your table view data
         }
         [self.refreshControl endRefreshing];
         [self.activityIndicator stopAnimating];
@@ -81,16 +77,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-//if this function is not called, then you forgot to call the datasource = self call in viewdidload
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.filteredMovies.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
-    
     NSDictionary *movie = self.filteredMovies[indexPath.row];
-    
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
@@ -99,7 +93,6 @@
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
-    // [cell.posterView setImageWithURL:posterURL];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:posterURL];
     
@@ -122,24 +115,9 @@
         }
     }
     failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
-    // do something for the failure condition
+        NSLog(@"%@", [error localizedDescription]);
     }];
     return cell;
-}
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.filteredMovies[indexPath.row];
-    DetailsViewController *detailsViewController = [segue destinationViewController];
-    detailsViewController.movie = movie;
-    detailsViewController.movies = self.filteredMovies;
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -159,5 +137,17 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.movie = movie;
+    detailsViewController.movies = self.filteredMovies;
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 @end

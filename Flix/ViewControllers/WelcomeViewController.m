@@ -20,8 +20,6 @@
     
     self.welcomeButton.layer.cornerRadius = 10;
     self.welcomeButton.clipsToBounds = true;
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

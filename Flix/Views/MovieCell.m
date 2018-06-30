@@ -12,12 +12,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.posterView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.posterView.layer.cornerRadius = 30;
+    self.posterView.clipsToBounds = true;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
